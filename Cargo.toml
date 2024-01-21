@@ -1,0 +1,18 @@
+[package]
+name = "synctex_sys"
+repository = "https://github.com/Atreyagaurav/synctex-sys"
+description = "Rust Bindings to libsynctex's C API"
+license = "MIT"
+version = "0.1.0"
+links = "libsynctex"
+build = "build.rs"
+edition = "2021"
+
+keywords = ["LaTeX"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+[build-dependencies]
+bindgen = "0.69.2"
