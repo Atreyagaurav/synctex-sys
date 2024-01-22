@@ -1,14 +1,20 @@
 use bindgen;
+use pkg_config;
 
 use std::env;
 use std::path::PathBuf;
 
 fn main() {
-    println!("cargo:rustc-link-lib=synctex");
     println!("cargo:rerun-if-changed=wrapper.h");
+    let synctex = pkg_config::probe_library("synctex").unwrap();
     let bindings = bindgen::Builder::default()
         .header("wrapper.h")
-        .clang_arg("-I/usr/include/synctex/")
+        .clang_args(
+            synctex
+                .include_paths
+                .iter()
+                .map(|path| format!("-I{}", path.to_string_lossy())),
+        )
         .parse_callbacks(Box::new(bindgen::CargoCallbacks::new()))
         .generate()
         .expect("Unable to generate bindings");

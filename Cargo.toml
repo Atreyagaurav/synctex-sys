@@ -3,7 +3,7 @@ name = "synctex_sys"
 repository = "https://github.com/Atreyagaurav/synctex-sys"
 description = "Rust Bindings to libsynctex's C API"
 license = "MIT"
-version = "0.1.0"
+version = "0.1.1"
 links = "libsynctex"
 build = "build.rs"
 edition = "2021"
@@ -16,3 +16,4 @@ keywords = ["LaTeX"]
 
 [build-dependencies]
 bindgen = "0.69.2"
+pkg-config = "0.3.29"
