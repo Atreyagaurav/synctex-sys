@@ -6,7 +6,7 @@ use std::path::PathBuf;
 
 fn main() {
     println!("cargo:rerun-if-changed=wrapper.h");
-    let synctex = pkg_config::probe_library("synctex").unwrap();
+    let synctex = pkg_config::probe_library("synctex").expect("libsynctex not found");
     let bindings = bindgen::Builder::default()
         .header("wrapper.h")
         .clang_args(
